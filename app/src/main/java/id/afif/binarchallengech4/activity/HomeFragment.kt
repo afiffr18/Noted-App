@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import id.afif.binarchallengech4.R
 import id.afif.binarchallengech4.adapter.ActionButtonListener
@@ -49,6 +50,7 @@ class HomeFragment : Fragment() {
         initRecycler()
         addData()
         getAllNote()
+        logoutUser()
     }
 
     private fun initRecycler(){
@@ -56,6 +58,11 @@ class HomeFragment : Fragment() {
             noteAdapter = NoteAdapter(action)
             rvNoted.adapter = noteAdapter
             rvNoted.layoutManager = LinearLayoutManager(requireContext())
+        }
+    }
+    private fun logoutUser(){
+        binding.tvLogout.setOnClickListener {
+            findNavController().navigate(R.id.action_homeFragment_to_loginFragment)
         }
     }
 
